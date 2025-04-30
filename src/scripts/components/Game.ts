@@ -8,6 +8,15 @@ import { LocalStorageService } from '../utils/localStorageService';
 function Game(): HTMLElement {
     const gameContainer = document.createElement('main');
 
+    let gameStartTime = LocalStorageService.getGameStartTime();
+    let gameElapsedTime = LocalStorageService.getGameElapsedTime(gameStartTime);
+    gameStartTime = Date.now() - gameElapsedTime;
+
+    const gameTimer = setInterval(() => {
+        gameElapsedTime = Date.now() - gameStartTime;
+        LocalStorageService.storeGameElapsedTime(gameElapsedTime);
+    }, 500);
+
     // Calculate result game board from gameData.
     const gameResult: Array<Array<string>> = calculateGameAnswer(gameData);
     // Initialize the array to store user inputs.
@@ -32,8 +41,14 @@ function Game(): HTMLElement {
             }
         }
 
-        if (isCorrect) alert('Congratulations ! You WON this game.');
-        else alert('You answers are NOT correct.');
+        if (isCorrect) {
+            alert('Congratulations ! You WON this game.');
+            clearInterval(gameTimer);
+            LocalStorageService.removeGameStartTime();
+            LocalStorageService.removeGameElapsedTime();
+        } else {
+            alert('You answers are NOT correct.');
+        }
     });
 
     // Append Submit button.

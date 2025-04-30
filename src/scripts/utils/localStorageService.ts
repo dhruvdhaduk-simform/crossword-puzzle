@@ -1,6 +1,8 @@
 import { COLS, ROWS } from '../data';
 
 const USER_INPUT_KEY = 'USER_INPUT_KEY';
+const GAME_START_TIME = 'GAME_START_TIME';
+const GAME_ELAPSED_TIME = 'GAME_ELAPSED_TIME';
 
 // Utility to Store and Retrive user input from localStorage.
 export class LocalStorageService {
@@ -55,5 +57,39 @@ export class LocalStorageService {
         }
 
         return userInput;
+    }
+
+    static storeGameStartTime(gameStartTime: number): void {
+        localStorage.setItem(GAME_START_TIME, `${gameStartTime}`);
+    }
+
+    static getGameStartTime(): number {
+        const gameStartTime = Number(
+            localStorage.getItem(GAME_START_TIME) || Date.now()
+        );
+        this.storeGameStartTime(gameStartTime);
+
+        return gameStartTime;
+    }
+
+    static removeGameStartTime(): void {
+        localStorage.removeItem(GAME_START_TIME);
+    }
+
+    static storeGameElapsedTime(gameElapsedTime: number): void {
+        localStorage.setItem(GAME_ELAPSED_TIME, `${gameElapsedTime}`);
+    }
+
+    static getGameElapsedTime(gameStartTime: number): number {
+        const gameElapsedTime = Number(localStorage.getItem(GAME_ELAPSED_TIME));
+        if (isNaN(gameElapsedTime) || !gameElapsedTime) {
+            return Date.now() - gameStartTime;
+        }
+
+        return gameElapsedTime;
+    }
+
+    static removeGameElapsedTime(): void {
+        localStorage.removeItem(GAME_ELAPSED_TIME);
     }
 }
