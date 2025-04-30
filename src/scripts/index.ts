@@ -1,3 +1,8 @@
-const greet: string = 'Hello World from TypeScript';
+import App from './components/App';
 
-console.log(greet);
+const root = document.querySelector('#root');
+if (!root) {
+    throw new ReferenceError("Couldn't find root element in this page.");
+}
+
+root.append(App());
