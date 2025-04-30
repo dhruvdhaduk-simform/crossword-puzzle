@@ -2,11 +2,14 @@ import { gameData } from '../data';
 import { calculateGameAnswer } from '../utils/calculateGameAnswer';
 import GameBoard from './GameBoard';
 import GameHints from './GameHints';
+import Timer from './Timer';
 import { LocalStorageService } from '../utils/localStorageService';
 
 // Game component, contains GameBoard and GameHints.
 function Game(): HTMLElement {
     const gameContainer = document.createElement('main');
+
+    const timerMutationCallbacks: Array<(newElapsedTime: number) => void> = [];
 
     let gameStartTime = LocalStorageService.getGameStartTime();
     let gameElapsedTime = LocalStorageService.getGameElapsedTime(gameStartTime);
@@ -15,12 +18,16 @@ function Game(): HTMLElement {
     const gameTimer = setInterval(() => {
         gameElapsedTime = Date.now() - gameStartTime;
         LocalStorageService.storeGameElapsedTime(gameElapsedTime);
+
+        timerMutationCallbacks.forEach((cb) => cb(gameElapsedTime));
     }, 500);
 
     // Calculate result game board from gameData.
     const gameResult: Array<Array<string>> = calculateGameAnswer(gameData);
     // Initialize the array to store user inputs.
     const userInput: Array<Array<string>> = LocalStorageService.getUserInput();
+
+    gameContainer.append(Timer(gameElapsedTime, timerMutationCallbacks));
 
     // Append GameBoard components.
     gameContainer.append(GameBoard(gameData, userInput));
