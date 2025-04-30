@@ -26,3 +26,58 @@ header {
     font-size: 1.35rem;
     font-weight: bold;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border: 1px solid white;
+    width: fit-content;
+    padding: 0.25rem;
+}
+
+.board-row {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.board-cell {
+    width: 3rem;
+    height: 3rem;
+
+    border: 1px solid white;
+}
+
+.hints {
+    width: 100%;
+    max-width: 70rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.hints ul {
+    list-style-type: none;
+}
+
+.hint-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
+}
+
+.hints li {
+    font-size: 0.75rem;
+}
