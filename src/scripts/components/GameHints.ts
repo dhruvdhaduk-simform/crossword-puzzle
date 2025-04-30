@@ -10,6 +10,7 @@ function GameHints(gameData: Array<GameWord>): HTMLDivElement {
     const horizontalWordsHintsHeader = document.createElement('p');
     horizontalWordsHintsHeader.textContent = 'ACROSS';
     horizontalWordsHintsHeader.className = 'hint-header';
+    horizontalWordsHintsHeader.role = 'heading';
     const horizontalWordsHintsList = document.createElement('ul');
 
     horizontalWordsHints.append(horizontalWordsHintsHeader);
@@ -20,6 +21,7 @@ function GameHints(gameData: Array<GameWord>): HTMLDivElement {
     const verticalWordsHintsHeader = document.createElement('p');
     verticalWordsHintsHeader.textContent = 'DOWN';
     verticalWordsHintsHeader.className = 'hint-header';
+    verticalWordsHintsHeader.role = 'heading';
     const verticalWordsHintsList = document.createElement('ul');
 
     verticalWordsHints.append(verticalWordsHintsHeader);
