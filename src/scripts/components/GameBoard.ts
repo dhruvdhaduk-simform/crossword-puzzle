@@ -63,6 +63,7 @@ function GameBoard(
                 cellInput.type = 'text';
                 cellInput.className = 'board-cell-input';
                 cellInput.maxLength = 1;
+                cellInput.ariaLabel = `Input for Cel at Row ${i + 1} Column ${j + 1}`;
                 cellInput.value = userInput[i][j];
 
                 cellInput.addEventListener('input', () => {
