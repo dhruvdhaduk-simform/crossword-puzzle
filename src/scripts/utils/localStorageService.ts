@@ -1,3 +1,5 @@
+import { COLS, ROWS } from '../data';
+
 const USER_INPUT_KEY = 'USER_INPUT_KEY';
 
 // Utility to Store and Retrive user input from localStorage.
@@ -12,9 +14,9 @@ export class LocalStorageService {
         const userInput: Array<Array<string>> = [];
 
         // Initialize the userInput that is to be returned with empty strings.
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < ROWS; i++) {
             userInput.push([]);
-            for (let j = 0; j < 6; j++) {
+            for (let j = 0; j < COLS; j++) {
                 userInput[i].push('');
             }
         }
@@ -33,7 +35,7 @@ export class LocalStorageService {
                     userInputParsedRow.every((item) => typeof item === 'string')
                 ) {
                     for (let j = 0; j < userInputParsedRow.length; j++) {
-                        if (i >= 5 || j >= 6) continue;
+                        if (i >= ROWS || j >= COLS) continue;
                         const item = userInputParsedRow[j];
                         // Discard input if it has more than 1 characters.
                         if (item.length !== 1) continue;

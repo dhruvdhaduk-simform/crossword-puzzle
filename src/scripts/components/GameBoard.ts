@@ -1,3 +1,4 @@
+import { COLS, ROWS } from '../data';
 import { GameWord } from '../interfaces';
 import { getDisabledCells } from '../utils/getDisabledCells';
 import { LocalStorageService } from '../utils/localStorageService';
@@ -15,14 +16,14 @@ function GameBoard(
     // Hold the board cell elements.
     const gameBoardCells: Array<Array<HTMLDivElement>> = [];
 
-    // Create the cell elements for 5x6 grid.
-    for (let i = 0; i < 5; i++) {
+    // Create the cell elements for grid.
+    for (let i = 0; i < ROWS; i++) {
         const gameRow = document.createElement('div');
         gameRow.className = 'board-row';
 
         gameBoardCells.push([]);
 
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < COLS; j++) {
             const gameCell = document.createElement('div');
             gameCell.className = 'board-cell';
             gameRow.append(gameCell);

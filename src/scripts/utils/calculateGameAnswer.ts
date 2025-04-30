@@ -1,3 +1,4 @@
+import { COLS, ROWS } from '../data';
 import { GameWord } from '../interfaces';
 
 // Calculate the Result game board from gameData.
@@ -7,9 +8,9 @@ export function calculateGameAnswer(
     const gameAnswer: Array<Array<string>> = [];
 
     // Fill the gameAnswer with empty strings.
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < ROWS; i++) {
         gameAnswer.push([]);
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < COLS; j++) {
             gameAnswer[i].push('');
         }
     }

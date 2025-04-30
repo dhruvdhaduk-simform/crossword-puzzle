@@ -1,3 +1,4 @@
+import { COLS, ROWS } from '../data';
 import { GameWord, Cell } from '../interfaces';
 
 // Get the cells that are disabled from gameData.
@@ -7,9 +8,9 @@ export function getDisabledCells(gameData: Array<GameWord>): Array<Cell> {
     const gameBoard: Array<Array<boolean>> = [];
 
     // Initialize the temporary gameBoard with 'false', which means all cells are disabled.
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < ROWS; i++) {
         const gameBoardRow: Array<boolean> = [];
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < COLS; j++) {
             gameBoardRow.push(false);
         }
         gameBoard.push(gameBoardRow);
