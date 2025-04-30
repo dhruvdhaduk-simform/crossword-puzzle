@@ -10,3 +10,19 @@
     background-color: black;
     color: white;
 }
+
+header {
+    border-bottom: 1px solid #464646;
+    height: 3rem;
+    width: 100%;
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+
+    font-size: 1.35rem;
+    font-weight: bold;
+}
