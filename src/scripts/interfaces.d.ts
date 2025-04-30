@@ -6,3 +6,8 @@ export interface GameWord {
     col: number;
     dir: 'horizontal' | 'vertical';
 }
+
+export interface Cell {
+    row: number;
+    col: number;
+}
