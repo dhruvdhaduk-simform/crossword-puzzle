@@ -1,5 +1,9 @@
 import { GameWord } from './interfaces';
 
+export const ROWS = 5;
+export const COLS = 6;
+
+// Array of all the words that is to be predicted.
 export const gameData: Array<GameWord> = [
     {
         index: 1,

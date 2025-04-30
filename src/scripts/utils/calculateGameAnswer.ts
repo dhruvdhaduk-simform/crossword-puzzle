@@ -1,17 +1,21 @@
+import { COLS, ROWS } from '../data';
 import { GameWord } from '../interfaces';
 
+// Calculate the Result game board from gameData.
 export function calculateGameAnswer(
     gameData: Array<GameWord>
 ): Array<Array<string>> {
     const gameAnswer: Array<Array<string>> = [];
 
-    for (let i = 0; i < 5; i++) {
+    // Fill the gameAnswer with empty strings.
+    for (let i = 0; i < ROWS; i++) {
         gameAnswer.push([]);
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < COLS; j++) {
             gameAnswer[i].push('');
         }
     }
 
+    // Iterate over each word in game data and fill the gameAnswer from it.
     for (const gameWord of gameData) {
         const word = gameWord.word.split('');
         let rowI = gameWord.row - 1;

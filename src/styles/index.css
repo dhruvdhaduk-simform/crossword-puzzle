@@ -13,9 +13,9 @@
 
 header {
     border-bottom: 1px solid #464646;
-    height: 3rem;
+    height: 4rem;
     width: 100%;
-    max-width: 70rem;
+    max-width: 80rem;
     margin-left: auto;
     margin-right: auto;
 
@@ -23,7 +23,7 @@ header {
     align-items: center;
     padding-left: 1rem;
 
-    font-size: 1.35rem;
+    font-size: 1.75rem;
     font-weight: bold;
 }
 
@@ -50,8 +50,8 @@ main {
 }
 
 .board-cell {
-    width: 3rem;
-    height: 3rem;
+    width: 4em;
+    height: 4rem;
 
     background-color: black;
     border: 1px solid #ffffff50;
@@ -71,7 +71,7 @@ main {
     position: absolute;
     top: 0.1rem;
     right: 0.1rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .board-cell-input {
@@ -79,9 +79,9 @@ main {
     color: white;
     border: none;
     text-align: center;
-    font-size: 1.25rem;
-    width: 1.75rem;
-    height: 1.75rem;
+    font-size: 1.65rem;
+    width: 1.65rem;
+    height: 1.65rem;
 }
 
 .submit-btn {
@@ -118,12 +118,19 @@ main {
 }
 
 .hint-header {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: underline;
     margin-bottom: 0.5rem;
 }
 
 .hints li {
-    font-size: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+@media (max-width: 600px) {
+    .hints {
+        flex-direction: column;
+    }
 }

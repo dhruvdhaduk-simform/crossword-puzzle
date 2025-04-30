@@ -1,18 +1,22 @@
+import { COLS, ROWS } from '../data';
 import { GameWord, Cell } from '../interfaces';
 
+// Get the cells that are disabled from gameData.
 export function getDisabledCells(gameData: Array<GameWord>): Array<Cell> {
     const disabledCells: Array<Cell> = [];
 
     const gameBoard: Array<Array<boolean>> = [];
 
-    for (let i = 0; i < 5; i++) {
+    // Initialize the temporary gameBoard with 'false', which means all cells are disabled.
+    for (let i = 0; i < ROWS; i++) {
         const gameBoardRow: Array<boolean> = [];
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < COLS; j++) {
             gameBoardRow.push(false);
         }
         gameBoard.push(gameBoardRow);
     }
 
+    // Iterate over each word of game data to fill the gameBoard.
     for (const gameWord of gameData) {
         let rowI = gameWord.row - 1;
         let colI = gameWord.col - 1;
@@ -25,6 +29,7 @@ export function getDisabledCells(gameData: Array<GameWord>): Array<Cell> {
         }
     }
 
+    // Push cell in disabledCell which are not marked in previous iteration.
     for (let i = 0; i < gameBoard.length; i++) {
         const gameBoardRow = gameBoard[i];
 
