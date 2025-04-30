@@ -5,7 +5,16 @@ import GameHints from './GameHints';
 function Game(): HTMLElement {
     const gameContainer = document.createElement('main');
 
-    gameContainer.append(GameBoard(gameData));
+    const userInput: Array<Array<string>> = [];
+
+    for (let i = 0; i < 5; i++) {
+        userInput.push([]);
+        for (let j = 0; j < 6; j++) {
+            userInput[i].push('');
+        }
+    }
+
+    gameContainer.append(GameBoard(gameData, userInput));
     gameContainer.append(GameHints(gameData));
 
     return gameContainer;
