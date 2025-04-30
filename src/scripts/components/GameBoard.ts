@@ -51,6 +51,22 @@ function GameBoard(gameData: Array<GameWord>): HTMLDivElement {
                 cellInput.className = 'board-cell-input';
                 cellInput.maxLength = 1;
 
+                cellInput.addEventListener('input', () => {
+                    let value = cellInput.value.trim()[0];
+                    if (value) {
+                        value = value.toUpperCase();
+                        const valueCharCode = value.charCodeAt(0);
+                        if (
+                            valueCharCode >= 'A'.charCodeAt(0) &&
+                            valueCharCode <= 'Z'.charCodeAt(0)
+                        )
+                            cellInput.value = value;
+                        else cellInput.value = '';
+                    } else {
+                        cellInput.value = '';
+                    }
+                });
+
                 gameBoardCell.append(cellInput);
             }
         }
