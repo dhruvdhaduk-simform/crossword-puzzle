@@ -84,6 +84,24 @@ main {
     height: 1.75rem;
 }
 
+.submit-btn {
+    background-color: white;
+    border: none;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    opacity: 0.9;
+}
+.submit-btn:active {
+    opacity: 0.8;
+}
+
 .hints {
     width: 100%;
     max-width: 70rem;

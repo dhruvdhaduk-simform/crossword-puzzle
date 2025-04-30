@@ -1,7 +1,10 @@
 import { GameWord } from '../interfaces';
 import { getDisabledCells } from '../utils/getDisabledCells';
 
-function GameBoard(gameData: Array<GameWord>): HTMLDivElement {
+function GameBoard(
+    gameData: Array<GameWord>,
+    userInput: Array<Array<string>>
+): HTMLDivElement {
     const disabledCells = getDisabledCells(gameData);
 
     const gameBoard = document.createElement('div');
@@ -44,12 +47,31 @@ function GameBoard(gameData: Array<GameWord>): HTMLDivElement {
     }
 
     for (let i = 0; i < gameBoardCells.length; i++) {
-        for (const gameBoardCell of gameBoardCells[i]) {
+        for (let j = 0; j < gameBoardCells[i].length; j++) {
+            const gameBoardCell = gameBoardCells[i][j];
             if (!gameBoardCell.classList.contains('disabled')) {
                 const cellInput = document.createElement('input');
                 cellInput.type = 'text';
                 cellInput.className = 'board-cell-input';
                 cellInput.maxLength = 1;
+
+                cellInput.addEventListener('input', () => {
+                    let value = cellInput.value.trim()[0];
+                    if (value) {
+                        value = value.toUpperCase();
+                        const valueCharCode = value.charCodeAt(0);
+                        if (
+                            valueCharCode >= 'A'.charCodeAt(0) &&
+                            valueCharCode <= 'Z'.charCodeAt(0)
+                        )
+                            cellInput.value = value;
+                        else cellInput.value = '';
+                    } else {
+                        cellInput.value = '';
+                    }
+
+                    userInput[i][j] = cellInput.value;
+                });
 
                 gameBoardCell.append(cellInput);
             }
