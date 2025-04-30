@@ -1,3 +1,4 @@
+// Interface to hold a word that is to be predicted.
 export interface GameWord {
     index: number;
     word: string;

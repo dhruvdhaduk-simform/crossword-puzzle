@@ -1,10 +1,12 @@
 import { GameWord } from '../interfaces';
 
+// Calculate the Result game board from gameData.
 export function calculateGameAnswer(
     gameData: Array<GameWord>
 ): Array<Array<string>> {
     const gameAnswer: Array<Array<string>> = [];
 
+    // Fill the gameAnswer with empty strings.
     for (let i = 0; i < 5; i++) {
         gameAnswer.push([]);
         for (let j = 0; j < 6; j++) {
@@ -12,6 +14,7 @@ export function calculateGameAnswer(
         }
     }
 
+    // Iterate over each word in game data and fill the gameAnswer from it.
     for (const gameWord of gameData) {
         const word = gameWord.word.split('');
         let rowI = gameWord.row - 1;

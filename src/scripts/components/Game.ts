@@ -4,17 +4,23 @@ import GameBoard from './GameBoard';
 import GameHints from './GameHints';
 import { LocalStorageService } from '../utils/localStorageService';
 
+// Game component, contains GameBoard and GameHints.
 function Game(): HTMLElement {
     const gameContainer = document.createElement('main');
 
+    // Calculate result game board from gameData.
     const gameResult: Array<Array<string>> = calculateGameAnswer(gameData);
+    // Initialize the array to store user inputs.
     const userInput: Array<Array<string>> = LocalStorageService.getUserInput();
 
+    // Append GameBoard components.
     gameContainer.append(GameBoard(gameData, userInput));
 
+    // Create Submit button.
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Submit';
     submitButton.className = 'submit-btn';
+    // Checks the result against user input.
     submitButton.addEventListener('click', () => {
         let isCorrect = true;
         outer: for (let i = 0; i < gameResult.length; i++) {
@@ -30,8 +36,10 @@ function Game(): HTMLElement {
         else alert('You answers are NOT correct.');
     });
 
+    // Append Submit button.
     gameContainer.append(submitButton);
 
+    // Append GameHints component.
     gameContainer.append(GameHints(gameData));
 
     return gameContainer;
