@@ -129,6 +129,11 @@ main {
     line-height: 1.35;
 }
 
+.timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 @media (max-width: 600px) {
     .hints {
         flex-direction: column;
