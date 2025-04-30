@@ -1,5 +1,6 @@
 import { GameWord } from '../interfaces';
 import { getDisabledCells } from '../utils/getDisabledCells';
+import { LocalStorageService } from '../utils/localStorageService';
 
 function GameBoard(
     gameData: Array<GameWord>,
@@ -54,6 +55,7 @@ function GameBoard(
                 cellInput.type = 'text';
                 cellInput.className = 'board-cell-input';
                 cellInput.maxLength = 1;
+                cellInput.value = userInput[i][j];
 
                 cellInput.addEventListener('input', () => {
                     let value = cellInput.value.trim()[0];
@@ -71,6 +73,7 @@ function GameBoard(
                     }
 
                     userInput[i][j] = cellInput.value;
+                    LocalStorageService.storeUserInput(userInput);
                 });
 
                 gameBoardCell.append(cellInput);

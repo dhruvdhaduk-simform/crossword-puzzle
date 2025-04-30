@@ -2,19 +2,13 @@ import { gameData } from '../data';
 import { calculateGameAnswer } from '../utils/calculateGameAnswer';
 import GameBoard from './GameBoard';
 import GameHints from './GameHints';
+import { LocalStorageService } from '../utils/localStorageService';
 
 function Game(): HTMLElement {
     const gameContainer = document.createElement('main');
 
     const gameResult: Array<Array<string>> = calculateGameAnswer(gameData);
-    const userInput: Array<Array<string>> = [];
-
-    for (let i = 0; i < 5; i++) {
-        userInput.push([]);
-        for (let j = 0; j < 6; j++) {
-            userInput[i].push('');
-        }
-    }
+    const userInput: Array<Array<string>> = LocalStorageService.getUserInput();
 
     gameContainer.append(GameBoard(gameData, userInput));
 
