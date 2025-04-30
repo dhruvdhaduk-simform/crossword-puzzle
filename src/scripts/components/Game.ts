@@ -4,6 +4,7 @@ import GameBoard from './GameBoard';
 import GameHints from './GameHints';
 import Timer from './Timer';
 import { LocalStorageService } from '../utils/localStorageService';
+import { formatDuration } from '../utils/formatDuration';
 
 // Game component, contains GameBoard and GameHints.
 function Game(): HTMLElement {
@@ -49,7 +50,9 @@ function Game(): HTMLElement {
         }
 
         if (isCorrect) {
-            alert('Congratulations ! You WON this game.');
+            alert(
+                `Congratulations ! You WON this game in ${formatDuration(gameElapsedTime)}.`
+            );
             clearInterval(gameTimer);
             LocalStorageService.removeGameStartTime();
             LocalStorageService.removeGameElapsedTime();
